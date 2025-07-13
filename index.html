@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #play-button {
+      margin: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #play-button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Hello</h1>
+
+    <!-- 🔘 Tombol untuk memulai musik -->
+    <button id="play-button">Putar Musik</button>
+
+    <div class="gallery">
+      <div class="photo-card">
+        <img src="img/16.jpg" alt="Iphone 16" />
+        <p>Gambar 1</p>
+      </div>
+      <div class="photo-card">
+        <img src="img/15.jpg" alt="Iphone 15" />
+        <p>Gambar 2</p>
+      </div>
+      <div class="photo-card">
+        <img src="img/13.jpg" alt="Iphone 13" />
+        <p>Gambar 3</p>
+      </div>
+      <div class="photo-card">
+        <img src="img/1.jpg" alt="Iphone XR" />
+        <p>Gambar 4</p>
+      </div>
+    </div>
+
+    <!-- 🎵 Video pemutar musik -->
+    <video id="bg-music" style="display: none;" playsinline>
+      <source src="video/output.mp4" type="video/mp4" />
+      Browser Anda tidak mendukung pemutar video.
+    </video>
+
+    <script>
+      const button = document.getElementById("play-button");
+      const music = document.getElementById("bg-music");
+
+      button.addEventListener("click", () => {
+        music.muted = false;
+        music.play().then(() => {
+          console.log("Musik diputar");
+          button.style.display = "none"; // sembunyikan tombol
+        }).catch(err => {
+          console.error("Gagal autoplay:", err);
+        });
+      });
+    </script>
+
+  </main>
+
+  <footer>
+    &copy; 2025 - Footer Hitam
+  </footer>
+
+</body>
+</html>
